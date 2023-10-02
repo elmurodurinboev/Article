@@ -29,6 +29,7 @@ const actions = {
          AuthService.register(user).then(response=>{
             console.log(response.data.user);
             context.commit("registerSuccess",response.data.user)
+            window.localStorage.setItem("token",response.data.user.token)
             resolve(response.data.user)
          }).catch(error=>{
             console.log(error.response.data.errors);

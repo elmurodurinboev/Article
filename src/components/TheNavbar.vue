@@ -29,7 +29,7 @@ export default {
    name: "Navbar",
    methods: {
       linkHandler() {
-         return this.$router.push("/")
+         return this.$router.push({name: "home"})
       },
    },
 }
