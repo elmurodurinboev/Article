@@ -8,6 +8,11 @@
 <script>
 import { RouterView } from "vue-router"
 import TheNavbar from "./components/TheNavbar.vue"
-export default { components: { TheNavbar } }
+export default {
+   components: { TheNavbar },
+   mounted() {
+      this.$store.dispatch("getUser")
+   },
+}
 </script>
 <style></style>

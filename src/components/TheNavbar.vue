@@ -9,28 +9,42 @@
          </div>
 
          <div class="col-md-3 text-end">
-            <router-link
-               to="/login"
-               class="btn btn-outline-primary me-2"
-               type="button"
-               >Login</router-link
-            >
+            <template v-if="isLoggedIn">
+               {{ currentUser }}
+            </template>
 
-            <router-link to="/register" type="button" class="btn btn-primary"
-               >Sign-up</router-link
-            >
+            <template v-if="isAnonymous">
+               <router-link
+                  to="/login"
+                  class="btn btn-outline-primary me-2"
+                  type="button"
+                  >Login</router-link
+               >
+               <router-link to="/register" type="button" class="btn btn-primary"
+                  >Sign-up</router-link
+               >
+            </template>
          </div>
       </header>
    </div>
 </template>
 
 <script>
+import { gettersTypes } from "../modules/types"
+import { mapGetters } from "vuex"
 export default {
    name: "Navbar",
    methods: {
       linkHandler() {
-         return this.$router.push({name: "home"})
+         return this.$router.push({ name: "home" })
       },
+   },
+   computed: {
+      ...mapGetters({
+         currentUser: gettersTypes.currentUser,
+         isLoggedIn: gettersTypes.isLoggedIn,
+         isAnonymous: gettersTypes.isAnonymous,
+      }),
    },
 }
 </script>
