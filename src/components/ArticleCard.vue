@@ -29,7 +29,7 @@
                      type="button"
                      class="btn btn-sm btn-outline-secondary"
                   >
-                     View
+                     Read More
                   </button>
                   <!-- <button
                      type="button"
