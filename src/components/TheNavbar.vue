@@ -10,7 +10,15 @@
 
          <div class="col-md-3 text-end">
             <template v-if="isLoggedIn">
-               {{ currentUser }}
+               <div class="d-flex gap-4 justify-content-end">
+                  <h5 class="border-black">{{ currentUser.username }}</h5>
+                  <a
+                     href="#"
+                     class="text-decoration-none text-danger"
+                     @click="logout"
+                     >Logout</a
+                  >
+               </div>
             </template>
 
             <template v-if="isAnonymous">
@@ -37,6 +45,9 @@ export default {
    methods: {
       linkHandler() {
          return this.$router.push({ name: "home" })
+      },
+      logout() {
+         return this.$store.dispatch("logout")
       },
    },
    computed: {

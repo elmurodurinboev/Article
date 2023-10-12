@@ -1,4 +1,4 @@
-import { setItem } from "../helpers/persistaneStorage"
+import { removeItem, setItem } from "../helpers/persistaneStorage"
 import AuthService from "../service/auth"
 import { gettersTypes } from "./types"
 
@@ -68,6 +68,11 @@ const mutations = {
    },
    currentUserFailure(state) {
       state.isLoggedIn = false
+      state.isLoading = false
+   },
+   logout(state) {
+      state.user = null
+      state.isLoggedIn = false
    },
 }
 
@@ -116,6 +121,10 @@ const actions = {
                context.commit("currentUserFailure")
             })
       })
+   },
+   logout(context) {
+      context.commit("logout")
+      removeItem("token")
    },
 }
 export default { state, mutations, actions, getters }
