@@ -4,6 +4,7 @@ const state = {
    data: null,
    isLoading: false,
    error: null,
+   articles: null
 }
 
 const mutations = {
@@ -20,6 +21,20 @@ const mutations = {
       state.isLoading = false
       state.errors = payload
    },
+
+   getArticleDetailStart(state) {
+      state.data = null
+      state.isLoading = true
+      state.articles = null
+   },
+   getArticleDetailSuccess(state, payload) {
+      state.isLoading = false
+      state.articles = payload
+   },
+   getArticleDetailFailure(state, payload) {
+      state.isLoading = false
+      state.errors = payload
+   },
 }
 
 const actions = {
@@ -32,6 +47,18 @@ const actions = {
                resolve(response.data.articles)
             })
             .catch((error) => contex.commit("getArticlesFailure", error))
+      })
+   },
+
+   articleDetail(contex,slug) {
+      contex.commit("getArticleDetailStart")
+      return new Promise((resolve) => {
+         ArticleService.articleDetail(slug)
+            .then((response) => {
+               contex.commit("getArticleDetailSuccess", response.data.articles)
+               resolve(response.data)
+            })
+            .catch((error) => contex.commit("getArticleDetailFailure", error))
       })
    },
 }

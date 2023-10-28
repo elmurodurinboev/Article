@@ -4,6 +4,10 @@ const ArticleService = {
     articles() {
         return axios.get("/articles")
     },
+    
+    articleDetail(slug) {
+        return axios.get(`/articles/${slug}`)
+    }
 }
 
-export  default ArticleService
+export default ArticleService
