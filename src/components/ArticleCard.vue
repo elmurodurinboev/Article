@@ -1,6 +1,8 @@
 <template>
    <div class="col">
-      <div class="card shadow-sm">
+      <div
+         class="main__card card shadow-sm d-flex flex-column justify-content-between"
+      >
          <svg
             class="bd-placeholder-img card-img-top"
             width="100%"
@@ -14,7 +16,7 @@
             <title>Placeholder</title>
             <rect width="100%" height="100%" fill="#55595c"></rect>
          </svg>
-         <div class="card-body">
+         <div class="card-body d-flex flex-column justify-content-between">
             <p class="text-black fw-medium">{{ article.title }}</p>
             <p class="card-text">
                This is a wider card with supporting text below as a natural
@@ -28,6 +30,7 @@
                   <button
                      type="button"
                      class="btn btn-sm btn-outline-secondary"
+                     @click="detailHandler"
                   >
                      Read More
                   </button>
@@ -55,6 +58,18 @@ export default {
          required: true,
       },
    },
+   methods: {
+      detailHandler() {
+         this.$router.push(`/article/${this.article.slug}`)
+         this.$store
+            .dispatch("articleDetail", this.article.slug)
+            .then((res) => console.log(res))
+      },
+   },
 }
 </script>
-<style></style>
+<style scoped>
+.main__card {
+   height: 450px;
+}
+</style>
