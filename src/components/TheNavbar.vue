@@ -2,9 +2,9 @@
 <template>
    <div class="container">
       <header
-         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4"
       >
-         <div @click="linkHandler" class="col-md-3 mb-2 mb-md-0">
+         <div @click="linkHandler" class="col-md-3 mb-2 mb-md-0 pointer-event">
             <h2>El</h2>
          </div>
 

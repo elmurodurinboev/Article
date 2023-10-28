@@ -19,9 +19,7 @@
          <div class="card-body d-flex flex-column justify-content-between">
             <p class="text-black fw-medium">{{ article.title }}</p>
             <p class="card-text">
-               This is a wider card with supporting text below as a natural
-               lead-in to additional content. This content is a little bit
-               longer.
+               {{article.body.slice(0,180)}}...
             </p>
             <div
                class="d-flex justify-content-between align-items-center card-footer"
@@ -61,9 +59,6 @@ export default {
    methods: {
       detailHandler() {
          this.$router.push(`/article/${this.article.slug}`)
-         this.$store
-            .dispatch("articleDetail", this.article.slug)
-            .then((res) => console.log(res))
       },
    },
 }
