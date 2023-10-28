@@ -4,7 +4,7 @@ const state = {
    data: null,
    isLoading: false,
    error: null,
-   articles: null
+   article: null
 }
 
 const mutations = {
@@ -12,7 +12,7 @@ const mutations = {
       state.data = null
       state.isLoading = true
       state.errors = null
-      state.articles = null
+      state.article = null
    },
    getArticlesSuccess(state, payload) {
       state.isLoading = false
@@ -26,11 +26,11 @@ const mutations = {
    getArticleDetailStart(state) {
       state.data = null
       state.isLoading = true
-      state.articles = null
+      state.article = null
    },
    getArticleDetailSuccess(state, payload) {
       state.isLoading = false
-      state.articles = payload
+      state.article = payload
    },
    getArticleDetailFailure(state, payload) {
       state.isLoading = false
