@@ -61,9 +61,6 @@ export default {
    methods: {
       detailHandler() {
          this.$router.push(`/article/${this.article.slug}`)
-         this.$store
-            .dispatch("articleDetail", this.article.slug)
-            .then((res) => console.log(res))
       },
    },
 }

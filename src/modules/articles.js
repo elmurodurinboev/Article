@@ -12,6 +12,7 @@ const mutations = {
       state.data = null
       state.isLoading = true
       state.errors = null
+      state.articles = null
    },
    getArticlesSuccess(state, payload) {
       state.isLoading = false
@@ -55,8 +56,8 @@ const actions = {
       return new Promise((resolve) => {
          ArticleService.articleDetail(slug)
             .then((response) => {
-               contex.commit("getArticleDetailSuccess", response.data.articles)
-               resolve(response.data)
+               contex.commit("getArticleDetailSuccess", response.data.article)
+               resolve(response.data.article)
             })
             .catch((error) => contex.commit("getArticleDetailFailure", error))
       })

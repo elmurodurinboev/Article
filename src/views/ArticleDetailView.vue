@@ -4,7 +4,11 @@
 
 <script>
 export default {
-   name: "articleDetailView"
+   name: "articleDetailView",
+   mounted() {
+      this.$store
+            .dispatch("articleDetail", this.$route.params.slug)
+   },
 }
 </script>
 
